@@ -1,0 +1,49 @@
+.plain {
+    font-size: large;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    width: 45%;
+    float: left;
+}
+#text-plain-1 {
+    margin: 5px;
+    padding: 10px;
+    border: #731cb9 solid 2px;
+}
+#text-plain-2 {
+    margin: 5px;
+    padding: 10px;
+    border: #731cb9 solid 2px;
+}
+#text-encrypted {
+    margin: 5px;
+    padding: 10px;
+    border: #731cb9 solid 2px;
+}
+#text-decrypted {
+    margin: 5px;
+    padding: 10px;
+    border: #731cb9 solid 2px;
+}
+.encrypted {
+    font-size: large;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    width: 45%;
+    float: right;
+}
+#click-encrypt, #click-decrypt {
+    background-color: #731cb9 ;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
