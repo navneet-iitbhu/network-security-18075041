@@ -1,4 +1,3 @@
-import string
 import random
 import statistics
 import matplotlib.pyplot as plt
@@ -7,7 +6,9 @@ import des
 import random
 des_obj = des.des()
 
+# function to calculate the hamming distance
 def calc_hamming_dist(s1, s2):
+    # convert string to bit array
     s1_bit_array = des.string_to_bit_array(s1)
     s2_bit_array = des.string_to_bit_array(s2)
     dist = 0
@@ -22,6 +23,7 @@ def calc_hamming_dist(s1, s2):
 plain_text = "NavneeTT"
 secret_key = "dvij_joc"
 
+
 plain_text_list = []
 plain_text_list.append(plain_text)
 
@@ -32,7 +34,10 @@ plain_text_list_2 = []
 plain_text_list_2.append(plain_text)
 
 
+# function to change the string by m bits
 def change_str_by_m_bits(str, m):
+
+    # bit positions to not change
     ignore_index_list = [7, 15, 23, 31, 39, 47, 55, 63]
 
     index_list = []
@@ -40,14 +45,17 @@ def change_str_by_m_bits(str, m):
         if i not in ignore_index_list:
             index_list.append(i)
     
+    # pick m random positions
     positions = random.sample(index_list, m)
     
+    # change the bits
     for i in positions:
         str_list = des.string_to_bit_array(str)
         str_list[i] = str_list[i] ^ 1
     
     return des.bit_array_to_string(str_list)
 
+# generate five plain texts with hammming distance 1 from the original plain text
 def generate_random_plain_texts():
     initial_text = plain_text
     for i in range(0, 5):
@@ -56,6 +64,7 @@ def generate_random_plain_texts():
             str = change_str_by_m_bits(initial_text, 1)
         plain_text_list.append(str)
 
+# generate five secret keys with hamming distance 1 from the original secret key
 def generate_random_secret_keys():
     initial_key = secret_key
     for i in range(0, 5):
@@ -64,6 +73,7 @@ def generate_random_secret_keys():
             str = change_str_by_m_bits(initial_key, 1)
         secret_key_list.append(str)
 
+# generate five plain texts with hammming distance 1, 2, 3, 4, 5 from the original plain text
 def generate_five_hamming_dist_list():
     initial_text = plain_text
     for i in range(0, 5):
@@ -71,12 +81,13 @@ def generate_five_hamming_dist_list():
         plain_text_list_2.append(str)
         initial_text = str
 
-
+# call the functions
 generate_random_plain_texts()
 generate_random_secret_keys()
 generate_five_hamming_dist_list()
 
 
+# method to generate the plot
 def generate_plot(HD,title,initial_distances):
 
     HD_RoundWise = [initial_distances,] + list(zip(*HD))
@@ -134,4 +145,3 @@ perform_experiment(change_plain_text = 1, change_key = 0, change_hamming_distanc
 perform_experiment(change_plain_text = 0, change_key = 0, change_hamming_distance = 1, experiment_name = "Five Different Hamming Distances")
 
 perform_experiment(change_plain_text = 0, change_key = 1, change_hamming_distance = 0, experiment_name = "Five Different Keys")
-
